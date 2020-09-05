@@ -367,7 +367,6 @@ default_query_runners = [
     "redash.query_runner.exasol",
     "redash.query_runner.cloudwatch",
     "redash.query_runner.cloudwatch_insights",
->>>>>>> master
 ]
 
 enabled_query_runners = array_from_string(
