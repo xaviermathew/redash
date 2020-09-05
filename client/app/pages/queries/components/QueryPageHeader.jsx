@@ -6,6 +6,7 @@ import Dropdown from "antd/lib/dropdown";
 import Menu from "antd/lib/menu";
 import EllipsisOutlinedIcon from "@ant-design/icons/EllipsisOutlined";
 import useMedia from "use-media";
+import Link from "@/components/Link";
 import EditInPlace from "@/components/EditInPlace";
 import FavoritesControl from "@/components/FavoritesControl";
 import { QueryTagsControl } from "@/components/tags-control/TagsControl";
@@ -122,7 +123,7 @@ export default function QueryPageHeader({
         },
         {
           showAPIKey: {
-            isAvailable: !queryFlags.isNew,
+            isAvailable: !clientConfig.disablePublicUrls && !queryFlags.isNew,
             title: "Show API Key",
             onClick: openApiKeyDialog,
           },
@@ -179,26 +180,26 @@ export default function QueryPageHeader({
         {!queryFlags.isNew && queryFlags.canViewSource && (
           <span>
             {!sourceMode && (
-              <Button className="m-r-5" href={query.getUrl(true, selectedVisualization)}>
+              <Link.Button className="m-r-5" href={query.getUrl(true, selectedVisualization)}>
                 <i className="fa fa-pencil-square-o" aria-hidden="true" />
                 <span className="m-l-5">Edit Source</span>
-              </Button>
+              </Link.Button>
             )}
             {sourceMode && (
-              <Button
+              <Link.Button
                 className="m-r-5"
                 href={query.getUrl(false, selectedVisualization)}
                 data-test="QueryPageShowDataOnly">
                 <i className="fa fa-table" aria-hidden="true" />
                 <span className="m-l-5">Show Data Only</span>
-              </Button>
+              </Link.Button>
             )}
           </span>
         )}
 
         {!queryFlags.isNew && (
           <Dropdown overlay={moreActionsMenu} trigger={["click"]}>
-            <Button>
+            <Button data-test="QueryPageHeaderMoreButton">
               <EllipsisOutlinedIcon rotate={90} />
             </Button>
           </Dropdown>
