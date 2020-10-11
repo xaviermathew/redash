@@ -265,10 +265,10 @@ class Group(db.Model, BelongsToOrgMixin):
         "view_query",
         "view_source",
         "execute_query",
-        "list_users",
+        # "list_users",
         "schedule_query",
-        "list_dashboards",
-        "list_alerts",
+        # "list_dashboards",
+        # "list_alerts",
         "list_data_sources",
     ]
 

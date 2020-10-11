@@ -558,6 +558,7 @@ class Query(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model):
             )
             .filter(Query.is_archived.is_(include_archived))
             .filter(DataSourceGroup.group_id.in_(group_ids))
+            .filter(cls.user_id == user_id)
         )
         queries = (
             cls.query.options(
